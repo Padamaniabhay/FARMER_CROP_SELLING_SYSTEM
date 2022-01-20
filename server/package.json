@@ -10,9 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^14.2.0",
     "express": "^4.17.2",
     "helmet": "^5.0.1",
     "import": "0.0.6",
+    "joi": "^17.5.0",
     "mongoose": "^6.1.6"
   },
   "devDependencies": {
