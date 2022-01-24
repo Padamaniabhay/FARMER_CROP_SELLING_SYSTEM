@@ -20,6 +20,11 @@ import User from "./API/User";
 //Database connection
 import ConnectDB from "./Database/connection"
 
+
+//config
+import goolgeAuthConfig from "./config/google.config"; 
+import routeConfig from "./config/route.config";
+
 const crop = express();
 //application middlewares
 crop.use(express.json());
@@ -28,6 +33,11 @@ crop.use(helmet());
 crop.use(cors());
 crop.use(passport.initialize());
 crop.use(passport.session());
+
+
+//passport configuration
+goolgeAuthConfig(passport);
+routeConfig(passport);
 
 crop.use("/auth",Auth);
 crop.use("/image",Image);

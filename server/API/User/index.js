@@ -6,8 +6,6 @@ import { UserModel } from "../../database/allModels";
 const Router = express.Router();
 
 
-
-
 /*
 Route           /
 Descrip         get an own user data
