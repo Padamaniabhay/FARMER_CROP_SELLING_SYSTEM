@@ -1,9 +1,15 @@
+import './App.css';
+import temp from './Components/temp';
+
+
+//HOC
+import HomeLayoutHOC from './HOC/Home.HOC';
 
 function App() {
   return (
-    <div className="App">
-      <h1>ONLINE FARMER CROP SELLING SYSTEM</h1>
-    </div>
+    <>
+      <HomeLayoutHOC path="/" exact component={temp} />
+    </>
   );
 }
 
