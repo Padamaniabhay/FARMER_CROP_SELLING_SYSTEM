@@ -1,10 +1,35 @@
-import React, { useState } from 'react';
+import React,{useState} from 'react';
+import { useDispatch } from 'react-redux';
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { FcGoogle } from "react-icons/fc"
 
 
+import { signIn } from '../../Redux/Auth/Auth.action';
+
+
 const SignIn = ({isOpen,setIsOpen}) => {
+
+    const [userData, setUserData] = useState({
+        email: "",
+        password: ""
+       
+    })
+
+    const dispatch = useDispatch();
+
+    const handleChange = (e) => {
+        setUserData((prev) => ({ ...prev, [e.target.id]: e.target.value }))
+    }
+
+    const submit = () => {
+        setUserData({
+            email: "",
+            password: "",
+        });
+        console.log({ userData });
+        return (dispatch(signIn(userData)));
+    }
 
     function closeModal() {
         setIsOpen(false);
@@ -60,6 +85,7 @@ const SignIn = ({isOpen,setIsOpen}) => {
                                             <label htmlFor='email' >Email</label>
                                             <input
                                                 type="email"
+                                                onChange={handleChange} value={userData.email}
                                                 id='email'
                                                 placeholder='email@email.com'
                                                 className='w-full px-3 py-2 rounded-lg border border-gray-400 focus:outline-none focus:border-zomato-400'
@@ -71,6 +97,7 @@ const SignIn = ({isOpen,setIsOpen}) => {
                                             <label htmlFor='password' >Password</label>
                                             <input
                                                 type="password"
+                                                onChange={handleChange} value={userData.password}
                                                 id='password'
                                                 placeholder='*********'
                                                 className='w-full px-3 py-2 rounded-lg border border-gray-400 focus:outline-none focus:border-zomato-400'
@@ -79,6 +106,7 @@ const SignIn = ({isOpen,setIsOpen}) => {
                                             />
                                         </div>
                                         <div
+                                        onClick={submit}
                                             className='w-full text-center bg-crop-400 text-white py-2 rounded-lg'>
                                             Sign In
                                         </div>

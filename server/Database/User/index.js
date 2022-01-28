@@ -7,7 +7,11 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true },
     password: { type: String },
     address: [{ detail: { type: String }, for: { type: String } }],
-    phoneNumber: [{ type: Number }]
+    phoneNumber: { type: Number },
+    city:{type:String},
+    state:{type:String},
+    pincode:{type:Number, required:true}
+    
 },
     {
         timeStamps: true     //it create two attributes  1)createdAt 2)updatedAt
@@ -25,9 +29,10 @@ UserSchema.statics.findEmailAndPhone = async ({ email, phoneNumber }) => {
     const checkUserByEmail = await UserModel.findOne({ email });
 
     //check whether the phone Number exists
-    const checkUserByPhone = await UserModel.findOne({ phoneNumber });
+    // const checkUserByPhone = await UserModel.findOne({ phoneNumber });
 
-    if (checkUserByEmail || checkUserByPhone) {
+    // if (checkUserByEmail || checkUserByPhone) {
+    if (checkUserByEmail) {
         throw new Error("User already exist");
     }
 

@@ -6,8 +6,12 @@ const Schema = joi.object({
     fullname:joi.string().required().min(5),
     email:joi.string().email(),
     password:joi.string().min(5),
-    address:joi.array().items(joi.object({detail:joi.string(),for:joi.string()})),
-    phoneNumber:joi.number()
+    address:joi.string,
+    phoneNumber:joi.number(),
+    city:joi.string(),
+    state:joi.string(),
+    dist:joi.string(),
+    pincode:joi.number().min(6)
 })
 
 return Schema.validateAsync(userData);
