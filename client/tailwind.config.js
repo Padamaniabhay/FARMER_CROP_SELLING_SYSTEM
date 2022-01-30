@@ -19,6 +19,10 @@ module.exports = {
           900: '#1c1300',
         }
       },
+      transitionDuration: {
+        '0': '0ms',
+        '4000': '4000ms',
+      }
     }
   },
   plugins: [],
