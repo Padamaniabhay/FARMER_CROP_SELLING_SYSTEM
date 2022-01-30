@@ -17,7 +17,8 @@ Method          GET
 
 Router.get("/", passport.authenticate("jwt"), async (req, res) => {
     try {
-        const {email,fullname,phoneNumber,address} = req.session.passport.user._doc;
+        console.log(req.session.passport.user._doc);
+        // const {email,fullname,phoneNumber,address} = req.session.passport.user._doc;
        
         return res.json({ user: {email,fullname,phoneNumber,address} });
 
