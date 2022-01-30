@@ -26,6 +26,7 @@ export default function SignUp({ isOpen, setIsOpen }) {
     }
 
     const submit = () => {
+        closeModal();
         setUserData({
             email: "",
             phoneNumber: [],

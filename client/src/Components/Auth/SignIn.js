@@ -23,6 +23,7 @@ const SignIn = ({isOpen,setIsOpen}) => {
     }
 
     const submit = () => {
+        closeModal();
         setUserData({
             email: "",
             password: "",
