@@ -90,7 +90,7 @@
 
 
 import React, { useState } from 'react';
-import logo from "./logo.jpeg"
+import logo from "./LogoMakr-5hzIWn.png"
 
 import SignIn from '../Auth/SignIn';
 import SignUp from '../Auth/SignUp';

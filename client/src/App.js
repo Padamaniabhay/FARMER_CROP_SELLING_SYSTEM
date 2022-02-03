@@ -8,9 +8,11 @@ import './App.css';
 //pages
 import temp from './Components/temp';
 import Home from './pages/home';
+import Additems from './pages/additems';
 
 //HOC
 import HomeLayoutHOC from './HOC/Home.HOC';
+import additems from './pages/additems';
 
 function App() {
 
@@ -24,7 +26,10 @@ function App() {
 
   return (
     <>
-      <HomeLayoutHOC path="/" exact component={Home} />
+      {/* <HomeLayoutHOC path="/" exact component={Home} /> */}
+     
+      <HomeLayoutHOC path="/" exact component={additems} />
+      
     </>
   );
 }
