@@ -34,12 +34,12 @@ function App() {
 
   return (
     <>
-<<<<<<< HEAD
+{/* <<<<<<< HEAD */}
       {/* <HomeLayoutHOC path="/" exact component={Home} /> */}
      
       <HomeLayoutHOC path="/" exact component={additems} />
       
-=======
+{/* ======= */}
       <HomeLayoutHOC path="/" exact component={Home} />
       <CropItemLayoutHOC path="/fruit" exact component={Fruit}/>
       <CropItemLayoutHOC path="/vegetables" exact component={Vegetables}/>
@@ -47,7 +47,7 @@ function App() {
       <CropItemLayoutHOC path="/cereals/:id" exact component={Cereals}/>
       <CropItemLayoutHOC path="/vegetables/:id" exact component={Vegetables}/>
       <CropItemLayoutHOC path="/fruit/:id" exact component={Fruit}/>
->>>>>>> 2eb299f921ca9a9031459943dff8e06406b862e9
+{/* >>>>>>> 2eb299f921ca9a9031459943dff8e06406b862e9 */}
     </>
   );
 }
