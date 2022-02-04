@@ -13,14 +13,14 @@ import Additems from './pages/additems';
 
 //HOC
 import HomeLayoutHOC from './HOC/Home.HOC';
-<<<<<<< HEAD
+// <<<<<<< HEAD
 import additems from './pages/additems';
-=======
+// =======
 import CropItemLayoutHOC from './HOC/CropItem.HOC';
 import Fruit from './pages/Fruit';
 import Vegetables from './pages/Vegetables';
 import Cereals from './pages/Cereals';
->>>>>>> 2eb299f921ca9a9031459943dff8e06406b862e9
+// >>>>>>> 2eb299f921ca9a9031459943dff8e06406b862e9
 
 function App() {
 
@@ -37,7 +37,7 @@ function App() {
 {/* <<<<<<< HEAD */}
       {/* <HomeLayoutHOC path="/" exact component={Home} /> */}
      
-      <HomeLayoutHOC path="/" exact component={additems} />
+      {/* <HomeLayoutHOC path="/" exact component={additems} /> */}
       
 {/* ======= */}
       <HomeLayoutHOC path="/" exact component={Home} />
