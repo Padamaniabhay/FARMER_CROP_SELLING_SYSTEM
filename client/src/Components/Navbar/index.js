@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import logo from "./logo.jpeg"
 import { useDispatch, useSelector } from 'react-redux';
 import {FaChevronDown} from "react-icons/fa"
+=======
+import logo from "./LogoMakr-5hzIWn.png"
+>>>>>>> 524cb996f91dab86ae24ce9f4fa203eb9a08980d
 
 import SignIn from '../Auth/SignIn';
 import SignUp from '../Auth/SignUp';

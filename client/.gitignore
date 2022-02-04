@@ -1,9 +1,7 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
 /node_modules
 
 
+<<<<<<< HEAD
 package-lock.json
 
 .env
@@ -11,3 +9,6 @@ package-lock.json
 /server/node_modules
 
 package.json
+=======
+
+>>>>>>> 524cb996f91dab86ae24ce9f4fa203eb9a08980d
