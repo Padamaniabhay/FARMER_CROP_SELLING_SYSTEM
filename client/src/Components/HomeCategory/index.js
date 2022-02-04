@@ -23,7 +23,7 @@ const category = [
 
 const HomeCategory = () => {
     return <>
-        <div className='flex gap-6 w-full h-56 justify-between '>
+        <div className='flex gap-6 w-full h-56 justify-between px-20'>
             {
                 category.map((props) => (<CategoryCard {...props}/>))
             }

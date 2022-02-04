@@ -5,7 +5,7 @@ import CropCard from '../Components/CropCard';
 
 const Fruit = () => {
   return <>
-    <div className='flex flex-wrap w-full h-auto gap-6 justify-around py-5 px-5'>
+    <div className='flex flex-wrap w-full h-auto gap-6 py-5 px-5'>
       <CropCard />
       <CropCard />
       <CropCard />

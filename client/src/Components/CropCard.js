@@ -3,7 +3,7 @@ import {AiFillStar} from "react-icons/ai"
 
 const CropCard = () => {
     return <>
-        <div className='flex flex-col flex-wrap w-1/4 h-96 border-2 rounded-2xl hover:shadow-xl py-2 px-4 transitions duration-700 ease-in-out'>
+        <div className='flex flex-col flex-wrap mx-8 w-1/4 h-96 border-2 rounded-2xl hover:shadow-xl py-2 px-4 transitions duration-700 ease-in-out'>
             <div className='w-full h-60'>
                 <img
                     src='https://agroicapp.herokuapp.com/images/consumer/chana_dhal.jpg'

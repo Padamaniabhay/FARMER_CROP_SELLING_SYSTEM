@@ -20,6 +20,7 @@ export const signIn = (userData) => async (dispatch) => {
 
         localStorage.setItem("cropUser", JSON.stringify({ token: User.data.token }));
 
+        window.location.href = "http://localhost:3000/";
 
         return dispatch({ type: SIGN_IN, payload: User.data })
     } catch (error) {
@@ -38,8 +39,8 @@ export const signUp = (userData) => async (dispatch) => {
 
         getMySelf();
 
-
         localStorage.setItem("cropUser", JSON.stringify({ token: User.data.token }));
+        window.location.href = "http://localhost:3000/";
 
         return dispatch({ type: SIGN_UP, payload: User.data })
     } catch (error) {
@@ -66,7 +67,7 @@ export const signOut = () => async (dispatch) => {
     try {
         localStorage.removeItem("cropUser",);
         clearUser();
-        window.location.href = "http://localhost:3000/delivery";
+        window.location.href = "http://localhost:3000/";
 
         return dispatch({ type: SIGN_OUT, payload: {} })
     } catch (error) {

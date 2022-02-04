@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { getMySelf } from './Redux/User/User.action';
-
+import axios from 'axios';
 
 //pages
 import temp from './Components/temp';
@@ -17,13 +17,19 @@ import Fruit from './pages/Fruit';
 import Vegetables from './pages/Vegetables';
 import Cereals from './pages/Cereals';
 
+
+  if (localStorage.cropUser) {
+    const { token } = JSON.parse(localStorage.cropUser);
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  }
+
+
 function App() {
 
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
   useEffect(() => {
     if (localStorage.cropUser) dispatch(getMySelf());
-  }, [])
+  }, []);
 
 
 

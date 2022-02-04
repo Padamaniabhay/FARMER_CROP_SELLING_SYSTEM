@@ -36,8 +36,8 @@ export default function SignUp({ isOpen, setIsOpen }) {
             state: "",
             dist: ""
         });
-        console.log({ userData });
         return (dispatch(signUp(userData)));
+        
     }
 
     const googleSignIn = () => (window.location.href = "http://localhost:4000/auth/google");

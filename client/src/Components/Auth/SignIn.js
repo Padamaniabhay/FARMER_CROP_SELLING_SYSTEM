@@ -28,7 +28,6 @@ const SignIn = ({isOpen,setIsOpen}) => {
             email: "",
             password: "",
         });
-        console.log({ userData });
         return (dispatch(signIn(userData)));
     }
 

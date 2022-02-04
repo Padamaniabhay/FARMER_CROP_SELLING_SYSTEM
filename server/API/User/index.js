@@ -14,13 +14,11 @@ Access          Public
 Method          GET
 */
 
-
-Router.get("/", passport.authenticate('jwt', {session: false}), async (req, res) => {
+Router.get("/", passport.authenticate("jwt"), async (req, res) => {
     try {
-        const {email,fullname,phoneNumber,address} = req.session.passport.user._doc;
-       
-        return res.json({ user: {email,fullname,phoneNumber,address} });
+        const { email, fullname, phoneNumber, address } = req.session.passport.user._doc;
 
+        return res.json({ user: { email, fullname, phoneNumber, address } });
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
@@ -40,9 +38,9 @@ Method          GET
 Router.get("/:_id", async (req, res) => {
     try {
         const user = await UserModel.findById(req.params._id)
-        const {fullname} = user;
-       
-        return res.json({ user: {fullname} });
+        const { fullname } = user;
+
+        return res.json({ user: { fullname } });
 
     } catch (error) {
         return res.status(500).json({ error: error.message });

@@ -35,7 +35,6 @@ export const getMySelf = () => async (dispatch) => {
 
 export const clearUser = () => async (dispatch) => {
     try {
-
         return dispatch({ type: CLEAR_USER, payload: {} })
     } catch (error) {
         return dispatch({ type: "ERROR", payload: error })
