@@ -1,63 +1,73 @@
 import express from "express";
 import passport from "passport";
-
+import multer from 'multer'
 import { CropModel } from "../../database/allModels";
+
+// import { useParams } from "react-router-dom";
+
 
 const Router = express.Router();
 
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './Images')
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '_' + file.originalname)
+    }
+})
+
+
+//Multer config
+const upload = multer({ storage: storage })
 
 /*
 Route           /
-Descrip         get all orders based on id
-Params          _id
+Descrip         get all crop
+Params          NONE
 Access          Public
 Method          GET
 */
 
-Router.get("/:_id", passport.authenticate("jwt",{session:false}) ,async(req,res)=>{
-    try{
-        const {_id} =req.params;
-        const getOrders = await CropModel.findOne({user:_id});
- 
-        if(!getOrders) return res.status(404).json({error:"User not found"});
-        return res.json({orders:getOrders});
-        
-    }catch(error){
-            return res.status(500).json({error:error.message});
+Router.get("/", async (req, res) => {
+    try {
+        // const { type } = useParams();
+
+        const Crop = await CropModel.find({ category: "fruit" });
+
+        if (!Crop) return res.status(404).json({ error: "No Crop are there" });
+        return res.json({ Crop });
+
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
     }
 });
 
 
 
 /*
-Route           /new
-Descrip         add new order
-Params          _id
+Route           /addcrop
+Descrip         add new crop
+Params          NONE
 Access          Public
 Method          POST
 */
 
-Router.post("/new/:_id",async(req,res)=>{
-    try{
-        const {_id} =req.params;
-        const {orderDetails} = req.body;
+Router.post("/addcrop", upload.single('image'), passport.authenticate("jwt"), async (req, res) => {
+    try {
 
-        const addNewOrder = await CropModel.findOneAndUpdate(
-            {
-                user:_id
-            },
-            {
-                $push:{orderDetails}        //orderDetails is same as orderDetails:orderDetails
-            },
-            {
-                new:true
-            }
-        )
+        const { _id } = req.session.passport.user._doc;
 
-        return res.json({order:addNewOrder});
+        const image = req.file ? req.file.filename : null;
 
-    }catch(error){
-            return res.status(500).json({error:error.message});
+        const cropData = req.body;
+
+        await CropModel.create({ ...cropData, image, farmer: _id });
+
+        return res.json({ message: "Successfully Added Crop" });
+
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
     }
 });
 

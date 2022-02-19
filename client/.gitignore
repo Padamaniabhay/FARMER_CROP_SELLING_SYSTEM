@@ -1,14 +1,8 @@
 /node_modules
 
-
-<<<<<<< HEAD
 package-lock.json
 
 .env
 
-/server/node_modules
 
 package.json
-=======
-
->>>>>>> 524cb996f91dab86ae24ce9f4fa203eb9a08980d

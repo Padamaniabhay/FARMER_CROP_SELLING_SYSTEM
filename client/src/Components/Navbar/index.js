@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
-import logo from "./logo.jpeg"
 import { useDispatch, useSelector } from 'react-redux';
-import {FaChevronDown} from "react-icons/fa"
-=======
+import { FaChevronDown } from "react-icons/fa"
 import logo from "./LogoMakr-5hzIWn.png"
->>>>>>> 524cb996f91dab86ae24ce9f4fa203eb9a08980d
+import { useNavigate } from 'react-router-dom';
+
 
 import SignIn from '../Auth/SignIn';
 import SignUp from '../Auth/SignUp';
@@ -22,11 +20,12 @@ const MobNav = () => {
 }
 const LargNav = ({ SignIn, SignUp }) => {
 
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
     const reduxState = useSelector((global) => global.user.user);
 
-    console.log({reduxState});
+    // console.log({ reduxState });
 
     const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
@@ -42,21 +41,27 @@ const LargNav = ({ SignIn, SignUp }) => {
                 </div>
                 {
                     reduxState.user ?
-                       ( <div className='font-bold text-xl flex items-center flex-row gap-3 relative' onClick={() => setIsDropDownOpen((prev) => !prev)}>
-                            <button className='font-bold text-2xl flex gap-1 items-center'>{reduxState?.user?.fullname}<FaChevronDown/></button>
-                            {
-                                isDropDownOpen &&
-                                (<div className='absolute shadow-lg  top-10 w-32 bg-white z-30 flex flex-col'>
-                                    <button  className='py-1 px-4 text-xl bottom-2 font-normal border-2 border-gray-200'>Profile</button>
-                                    <button onClick={signOutHandler} className='py-1 px-4 text-xl font-normal border-2 border-gray-200'>Sign out</button>
-                                </div>)
-                            }
-                        </div>)
+                        (
+                            <div className='font-bold text-xl flex items-center flex-row gap-3 relative'>
+                                <button className='font-bold text-2xl flex gap-1 items-center' onClick={() => navigate('/addcrop')}>AddCrop</button>
+                                <button className='font-bold text-2xl flex gap-1 items-center' onClick={() => setIsDropDownOpen((prev) => !prev)} >{reduxState?.user?.fullname}<FaChevronDown /></button>
+                                {
+                                    isDropDownOpen &&
+                                    (
+                                        <div className='absolute shadow-lg right-0  top-10 w-32 bg-white z-30 flex flex-col'>
+                                            <button className='py-1 px-4 text-xl bottom-2 font-normal border-2 border-gray-200'>Profile</button>
+                                            <button onClick={signOutHandler} className='py-1 px-4 text-xl font-normal border-2 border-gray-200'>Sign out</button>
+                                        </div>)
+                                }
+                            </div>
+                        )
                         :
-                        (<div className='flex gap-4'>
-                            <button onClick={SignIn} className='py-1 px-4 text-2xl font-semibold border-2 border-white rounded-full'>Log In</button>
-                            <button onClick={SignUp} className='py-1 px-4 text-2xl font-semibold border-2 border-white rounded-full'>Sign Up</button>
-                        </div>)
+                        (
+                            <div className='flex gap-4'>
+                                <button onClick={SignIn} className='py-1 px-4 text-2xl font-semibold border-2 border-white rounded-full'>Log In</button>
+                                <button onClick={SignUp} className='py-1 px-4 text-2xl font-semibold border-2 border-white rounded-full'>Sign Up</button>
+                            </div>
+                        )
                 }
             </div>
         </div>

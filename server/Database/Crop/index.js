@@ -6,10 +6,8 @@ const CropSchema = new mongoose.Schema({
     descript: { type: String, required: true },
     category: { type: String, required: true },
     quantity: { type: Number, required: true },
-    photos: {
-        type: mongoose.Types.ObjectId,
-        ref: "Images"
-    },
+    address: { type: String },
+    image: { type: String },
     farmer: {
         type: mongoose.Types.ObjectId,
         ref: "Users"

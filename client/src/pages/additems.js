@@ -5,7 +5,7 @@ import AddCrop from '../Components/AddCrop';
 const Additems = () => {
   return (
       <>
-     < AddCrop />
+     <AddCrop/>
     </>
   );
 };
