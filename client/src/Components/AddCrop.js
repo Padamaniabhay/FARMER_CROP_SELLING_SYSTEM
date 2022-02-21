@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 
 import { Addcrop } from '../Redux/Crop/Crop.action';
+import { Link } from 'react-router-dom';
 
 const AddCrop = () => {
 
@@ -73,7 +74,7 @@ const AddCrop = () => {
               <label className="block mb-2 font-bold text-gray-800" id="Address">Address</label>
               <input type="text"
                 onChange={handleChange}
-                className=" w-full py-1 px-2 border-gray-400 border-2 rounded outline-none focus:border-crop-400 items-center " placeholder='Enter Address' id='Address' />
+                className=" w-full py-1 px-2 border-gray-400 border-2 rounded outline-none focus:border-crop-400 items-center " placeholder='Enter Address' id='address' />
             </div>
             <div>
               <label className="block mb-2 font-bold text-gray-800" id="Product Size">Product Size</label>
@@ -97,11 +98,6 @@ const AddCrop = () => {
             </div>
 
             <div>
-              <label className="block mb-2 font-bold text-gray-800" id="Phone Number">Phone Number</label>
-              <input type="number" className=" w-full py-1 px-2 border-gray-400 border-2 rounded outline-none focus:border-crop-400 items-center " placeholder='Enter Phone No.' id='Phone Number' />
-            </div>
-
-            <div>
               <label className="block mb-2 font-bold text-gray-800" id="Description ">Description *</label>
               <textarea type="text"
                 onChange={handleChange}
@@ -109,11 +105,13 @@ const AddCrop = () => {
             </div>
 
             <div className=" mb-2 font-bold py-5">
-              <div
-                onClick={submit}
-                className="w-full py-1 px-2 bg-crop-400 text-white  border-gray-400 border-2 rounded outline-none focus:border-crop-400 items-center" id='Submit'  >
-                Submit
-              </div>
+              <Link to={"../../"}>
+                <div
+                  onClick={submit}
+                  className="w-full py-1 px-2 bg-crop-400 text-white  border-gray-400 border-2 rounded outline-none focus:border-crop-400 items-center" id='Submit'  >
+                  Submit
+                </div>
+              </Link>
             </div>
           </div>
 

@@ -10,13 +10,21 @@ const Router = express.Router();
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, './Images')
+        cb(null, './public/images/')
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + '_' + file.originalname)
     }
 })
 
+// const storage = multer.diskStorage({
+//     destination: (req, file, callback) => {
+//       callback(null, "public/image/" + file.fieldname);
+//     },
+//     filename: (req, file, callback) => {
+//       callback(null, Date.now() + "-" + file.originalname);
+//     },
+//   });
 
 //Multer config
 const upload = multer({ storage: storage })
@@ -60,6 +68,7 @@ Router.post("/addcrop", upload.single('image'), passport.authenticate("jwt"), as
 
         const image = req.file ? req.file.filename : null;
 
+
         const cropData = req.body;
 
         await CropModel.create({ ...cropData, image, farmer: _id });
@@ -70,6 +79,29 @@ Router.post("/addcrop", upload.single('image'), passport.authenticate("jwt"), as
         return res.status(500).json({ error: error.message });
     }
 });
+
+
+/*
+Route           /
+Descrip         Get particular Crop details on id
+Params          _id
+Access          Public
+Method          GET
+*/
+
+
+Router.get("/:_id",async(req,res)=>{
+    try{
+
+        const {_id} = req.params;
+        const crop = await CropModel.findById(_id);
+        if(!crop)
+            return res.status(500).json({error:"crop not found"});
+        return res.json({crop});
+    }catch(error){
+        return res.status(500).json({error:error.message});
+    }
+})
 
 
 export default Router;

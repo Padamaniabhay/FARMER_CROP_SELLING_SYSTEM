@@ -1,5 +1,5 @@
 //libraries
-import express  from "express";
+import express from "express";
 import multer from "multer";    //accept image from the user that is uploading, this store it in memory untill api is done uploading in AWS
 
 
@@ -16,7 +16,7 @@ const Router = express.Router();
 
 //Multer config
 const storage = multer.memoryStorage();
-const upload = multer({storage});
+const upload = multer({ storage });
 
 /*
 Route     /
@@ -27,14 +27,14 @@ Method    GET
 */
 
 Router.get("/:_id", async (req, res) => {
-    try {
-      const image = await ImageModel.findById(req.params._id);
-  
-      return res.json({ image });
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
-  });
+  try {
+    const image = "http://localhost:4000/public/images/" + (req.params._id);
+
+    return res.json({image});
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
 
 /*
 Route           /
@@ -46,21 +46,21 @@ Method          POST
 
 //Router.post("/",upload.array("file",4),async(req,res)=>{    //array means we can upload multiple files and in params 4 means max 4 file we can upload at a time
 
-    // Router.post("/",upload.single("file"),async(req,res)=>{ 
-    // try{
+// Router.post("/",upload.single("file"),async(req,res)=>{ 
+// try{
 
-    //     const file = req.file;
+//     const file = req.file;
 
-    //     //S3 bucket options
-    //     const bucketOptions = {
-    //         Bucket:"foodorderpersonal",
-    //         Key:file.originalname,
-    //         Body:file.buffer,
-    //         ContentType:file.mimetype,
-    //         ACL:"public-read"       //access control list
-            
-    //     };
-     
+//     //S3 bucket options
+//     const bucketOptions = {
+//         Bucket:"foodorderpersonal",
+//         Key:file.originalname,
+//         Body:file.buffer,
+//         ContentType:file.mimetype,
+//         ACL:"public-read"       //access control list
+
+//     };
+
 
 // const uploadImage = await s3Upload(bucketOptions);
 
@@ -74,4 +74,3 @@ Method          POST
 
 export default Router;
 
-  

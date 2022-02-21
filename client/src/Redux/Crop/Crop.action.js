@@ -1,7 +1,7 @@
 import axios from "axios"
 
 //redux types
-import { ADD_CROP, GET_CROP } from "./Crop.type";
+import { ADD_CROP, GET_CROP ,GET_SPECIFIC_CROP} from "./Crop.type";
 
 
 //redux action
@@ -47,3 +47,16 @@ export const GetCrop = () => async (dispatch) => {
 
 
 
+export const getSpecificCrop = (_id) => async (dispatch) => {
+    try {
+        const crop = await axios({
+            method: "get",
+            url: `http://localhost:4000/crop/${_id}`,
+        });
+
+        return dispatch({ type: GET_SPECIFIC_CROP, payload: crop.data })
+    } catch (error) {
+        return dispatch({ type: "ERROR", payload: error })
+
+    }
+};

@@ -1,4 +1,4 @@
-import { ADD_CROP,GET_CROP } from "./Crop.type";
+import { ADD_CROP,GET_CROP,GET_SPECIFIC_CROP } from "./Crop.type";
 
 const INITIAL_STATE = {};
 
@@ -13,6 +13,11 @@ const CropReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 crop: action.payload,
             };
+        case GET_SPECIFIC_CROP:
+            return {
+                ...state,
+                crop:action.payload,
+            }
         default:
             return { ...state };
     }
