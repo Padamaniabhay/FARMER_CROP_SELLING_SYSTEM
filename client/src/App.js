@@ -21,6 +21,8 @@ import Fruit from './pages/Fruit';
 import Vegetables from './pages/Vegetables';
 import Cereals from './pages/Cereals';
 import CropDetails from './Components/CropDetails';
+import ContactUs from './pages/Contactus';
+import Profile from './pages/profile';
 // >>>>>>> 2eb299f921ca9a9031459943dff8e06406b862e9
 
 
@@ -51,6 +53,9 @@ function App() {
       <CropItemLayoutHOC path="/cereals/:id" exact component={CropDetails}/>
       <CropItemLayoutHOC path="/vegetables/:id" exact component={CropDetails}/>
       <CropItemLayoutHOC path="/fruit/:id" exact component={CropDetails}/>
+      <HomeLayoutHOC path="/contactus" exact component={ContactUs} />
+      <HomeLayoutHOC path="/profile" exact component={Profile} />
+
     </>
   );
 }
