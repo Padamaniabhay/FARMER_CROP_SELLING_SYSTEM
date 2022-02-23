@@ -1,7 +1,7 @@
 import axios from "axios"
 
 //redux types
-import { ADD_CROP, GET_CROP ,GET_SPECIFIC_CROP} from "./Crop.type";
+import { ADD_CROP, GET_CROP, GET_SEARCH_CROP, GET_SPECIFIC_CROP } from "./Crop.type";
 
 
 //redux action
@@ -10,7 +10,7 @@ import { getMySelf } from "../User/User.action";
 
 export const Addcrop = (data) => async (dispatch) => {
     try {
-        const User = await axios({
+        const Crop = await axios({
             method: "POST",
             url: `http://localhost:4000/crop/addcrop`,
             data,
@@ -21,7 +21,7 @@ export const Addcrop = (data) => async (dispatch) => {
 
         getMySelf();
 
-        return dispatch({ type: ADD_CROP, payload: User.data })
+        return dispatch({ type: ADD_CROP, payload: Crop.data })
     } catch (error) {
         return dispatch({ type: "ERROR", payload: error })
 
@@ -29,16 +29,33 @@ export const Addcrop = (data) => async (dispatch) => {
 };
 
 
-export const GetCrop = () => async (dispatch) => {
+export const GetCrop = (category) => async (dispatch) => {
     try {
-        const User = await axios({
+        const Crop = await axios({
             method: "GET",
-            url: `http://localhost:4000/crop/`,
+            url: `http://localhost:4000/crop/${category}`,
         });
 
         getMySelf();
 
-        return dispatch({ type: GET_CROP, payload: User.data })
+        return dispatch({ type: GET_CROP, payload: Crop.data })
+    } catch (error) {
+        return dispatch({ type: "ERROR", payload: error })
+
+    }
+};
+
+
+export const GetCropBySearch = (searchName,category) => async (dispatch) => {
+    try {
+        const Crop = await axios({
+            method: "GET",
+            url: `http://localhost:4000/crop/search/${category}/${searchName}`,
+        });
+
+        getMySelf();
+
+        return dispatch({ type: GET_SEARCH_CROP, payload: Crop.data })
     } catch (error) {
         return dispatch({ type: "ERROR", payload: error })
 
@@ -50,8 +67,8 @@ export const GetCrop = () => async (dispatch) => {
 export const getSpecificCrop = (_id) => async (dispatch) => {
     try {
         const crop = await axios({
-            method: "get",
-            url: `http://localhost:4000/crop/${_id}`,
+            method: "GET",
+            url: `http://localhost:4000/crop/specific/${_id}`,
         });
 
         return dispatch({ type: GET_SPECIFIC_CROP, payload: crop.data })

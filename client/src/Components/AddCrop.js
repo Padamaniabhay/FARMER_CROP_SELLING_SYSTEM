@@ -14,13 +14,23 @@ const AddCrop = () => {
     price: 0,
     descript: "",
     address: "",
-    image: ""
+    image: "",
+    category: "fruit"
   });
 
 
   const dispatch = useDispatch();
 
   const handleChange = (e) => setAddcropData((prev) => ({ ...prev, [e.target.id]: e.target.value }))
+
+  const categorychoose = (e) => {
+    setAddcropData((prev) => ({ ...prev, category: e.target.value }))
+    // setcategorydropdown((prev) => prev = !prev)
+  }
+
+
+  // const [categorydropdown, setcategorydropdown] = useState(false);
+  // const categoryDropDownfn = () => setcategorydropdown((prev) => prev = !prev)
 
   const uploadImage = (e) => {
     setAddcropData((prev) => ({ ...prev, image: e.target.files[0] }))
@@ -34,7 +44,7 @@ const AddCrop = () => {
     formdata.append('price', addcropData.price);
     formdata.append('descript', addcropData.descript);
     formdata.append('address', addcropData.address);
-    formdata.append('category', "fruit");
+    formdata.append('category', addcropData.category);
 
     // console.log({image:addcropData.image});
 
@@ -49,7 +59,8 @@ const AddCrop = () => {
       price: 0,
       descript: "",
       address: "",
-      image: ""
+      image: "",
+      category: "fruit"
     })
   }
 
@@ -69,6 +80,20 @@ const AddCrop = () => {
               <input type="text"
                 onChange={handleChange}
                 className=" w-full py-1 px-2 border-gray-400 border-2 rounded outline-none focus:border-crop-400 items-center " placeholder='Enter  Name' id='name' />
+            </div>
+            <div className='flex flex-row gap-3 items-baseline py-2'>
+              <label className="block mb-2 font-bold text-gray-800" id="Category" > Category</label>
+              {/* <div onClick={categoryDropDownfn} className=" w-full py-1 relative px-2 border-gray-400 border-2 rounded outline-none focus:border-crop-400 items-center " placeholder='Enter  Category' id='category' >{addcropData?.cetegory}</div>
+              {categorydropdown && <div className='absolute flex flex-col gap-1'>
+                <div type="text" onClick={categorychoose} className=" w-full py-1 px-2 border-gray-400 border-2 rounded outline-none bg-crop-400 items-center " placeholder='Enter  Category' id='fruit' >Fruit</div>
+                <div type="text" onClick={categorychoose} className=" w-full py-1 px-2 border-gray-400 border-2 rounded outline-none bg-crop-400 items-center " placeholder='Enter  Category' id='vegetable' >Vegetable</div>
+                <div type="text" onClick={categorychoose} className=" w-full py-1 px-2 border-gray-400 border-2 rounded outline-none bg-crop-400 items-center " placeholder='Enter  Category' id='cereal' >Cereal</div>
+              </div>} */}
+              <select name="category" onClick={categorychoose} id="category" className='w-24 px-3 py-1 bg-crop-300 text-white'>
+                <option value="fruit">Fruit</option>
+                <option value="vegetable">Vegetable</option>
+                <option value="cereal">Cereal</option>
+              </select>
             </div>
             <div>
               <label className="block mb-2 font-bold text-gray-800" id="Address">Address</label>
@@ -104,7 +129,7 @@ const AddCrop = () => {
                 rows={4} className="w-full py-1 px-2 border-gray-400 border-2 rounded outline-none focus:border-crop-400 items-center " placeholder='Enter Description' id='descript' />
             </div>
 
-            <div className=" mb-2 font-bold py-5">
+            <div className=" mb-2 font-bold py-5 ">
               <Link to={"../../"}>
                 <div
                   onClick={submit}
@@ -114,15 +139,10 @@ const AddCrop = () => {
               </Link>
             </div>
           </div>
-
         </form>
-
       </div>
-
-
-
-
-    </>);
+    </>
+  );
 };
 
 export default AddCrop;

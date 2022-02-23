@@ -3,7 +3,6 @@ import passport from "passport";
 import multer from 'multer'
 import { CropModel } from "../../database/allModels";
 
-// import { useParams } from "react-router-dom";
 
 
 const Router = express.Router();
@@ -31,18 +30,39 @@ const upload = multer({ storage: storage })
 
 /*
 Route           /
-Descrip         get all crop
-Params          NONE
+Descrip         get all crop based on category
+Params          category
 Access          Public
 Method          GET
 */
 
-Router.get("/", async (req, res) => {
+Router.get("/:category", async (req, res) => {
     try {
-        // const { type } = useParams();
+        const { category } = req.params;
 
-        const Crop = await CropModel.find({ category: "fruit" });
+        const Crop = await CropModel.find({ category });
 
+        if (!Crop) return res.status(404).json({ error: "No Crop are there" });
+        return res.json({ Crop });
+
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+});
+
+/*
+Route           /
+Descrip         search crop based on name
+Params          name
+Access          Public
+Method          GET
+*/
+
+Router.get("/search/:category/:name", async (req, res) => {
+    try {
+        const { name, category } = req.params;
+
+        const Crop = await CropModel.find({ name: { $regex: name,"$options" : "i"}, category})
         if (!Crop) return res.status(404).json({ error: "No Crop are there" });
         return res.json({ Crop });
 
@@ -90,16 +110,15 @@ Method          GET
 */
 
 
-Router.get("/:_id",async(req,res)=>{
-    try{
-
-        const {_id} = req.params;
+Router.get("/specific/:_id", async (req, res) => {
+    try {
+        const { _id } = req.params;
         const crop = await CropModel.findById(_id);
-        if(!crop)
-            return res.status(500).json({error:"crop not found"});
-        return res.json({crop});
-    }catch(error){
-        return res.status(500).json({error:error.message});
+        if (!crop)
+            return res.status(500).json({ error: "crop not found" });
+        return res.json({ crop });
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
     }
 })
 

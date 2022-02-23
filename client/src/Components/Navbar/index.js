@@ -37,20 +37,23 @@ const LargNav = ({ SignIn, SignUp }) => {
                 <div className='w-52 h-full '>
                     <img src={logo}
                         alt="logo"
-                        className='w-full h-full' />
+                        className='w-full h-full'
+                        onClick={() => window.location.href = "http://localhost:3000"}
+
+                    />
                 </div>
                 {
                     reduxState.user ?
                         (
                             <div className='font-bold text-xl flex items-center flex-row gap-3 relative'>
-                                <button className='font-bold text-2xl flex gap-1 items-center' onClick={() => navigate('/addcrop')}>AddCrop</button>
-                                <button className='font-bold text-2xl flex gap-1 items-center' onClick={() => setIsDropDownOpen((prev) => !prev)} >{reduxState?.user?.fullname}<FaChevronDown /></button>
+                                <button className='font-bold text-2xl flex gap-1 items-center hover:text-pink-600' onClick={() => navigate('/addcrop')}>AddCrop</button>
+                                <button className='font-bold text-2xl flex gap-1 items-center hover:text-pink-600' onClick={() => setIsDropDownOpen((prev) => !prev)} >{reduxState?.user?.fullname}<FaChevronDown /></button>
                                 {
                                     isDropDownOpen &&
                                     (
                                         <div className='absolute shadow-lg right-0  top-10 w-32 bg-white z-30 flex flex-col'>
-                                            <button className='py-1 px-4 text-xl bottom-2 font-normal border-2 border-gray-200'>Profile</button>
-                                            <button onClick={signOutHandler} className='py-1 px-4 text-xl font-normal border-2 border-gray-200'>Sign out</button>
+                                            <button className='py-1 px-4 text-xl bottom-2 font-normal border-2 border-gray-200 hover:text-pink-600'>Profile</button>
+                                            <button onClick={signOutHandler} className='py-1 px-4 text-xl font-normal border-2 border-gray-200 hover:text-pink-600'>Sign out</button>
                                         </div>)
                                 }
                             </div>
