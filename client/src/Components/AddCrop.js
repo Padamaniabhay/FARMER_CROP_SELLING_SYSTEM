@@ -23,10 +23,10 @@ const AddCrop = () => {
 
   const handleChange = (e) => setAddcropData((prev) => ({ ...prev, [e.target.id]: e.target.value }))
 
-  const categorychoose = (e) => {
-    setAddcropData((prev) => ({ ...prev, category: e.target.value }))
-    // setcategorydropdown((prev) => prev = !prev)
-  }
+  // const categorychoose = (e) => {
+  //   setAddcropData((prev) => ({ ...prev, category: e.target.value }))
+  //   // setcategorydropdown((prev) => prev = !prev)
+  // }
 
 
   // const [categorydropdown, setcategorydropdown] = useState(false);
@@ -67,7 +67,7 @@ const AddCrop = () => {
   return (
     <>
       {/* headding */}
-      <div className='text-lg text-center py-3 '>
+      <div className='text-lg text-center container px-20 py-6 flex flex-col justify-center items-center gap-2'>
         <h1 className='text-4xl font-semibold py-2'>SUPPLIER</h1>
         <p className='text-left'> A cash crop or profit crop is an agricultural crop which is grown to sell for profit. It is typically purchased by parties separate from a farm. ... In the least developed countries, cash crops are usually crops which attract demand in more developed nations, and hence have some export value.</p>
       </div>
@@ -76,7 +76,7 @@ const AddCrop = () => {
         <form className='flex gap-8 w-full md:px-52'>
           <div className='w-1/2 flex flex-col gap-2'>
             <div>
-              <label className="block mb-2 font-bold text-gray-800" id="Name"> Name</label>
+              <label className="block mb-2 font-bold text-gray-800" id="Name">Crop Name</label>
               <input type="text"
                 onChange={handleChange}
                 className=" w-full py-1 px-2 border-gray-400 border-2 rounded outline-none focus:border-crop-400 items-center " placeholder='Enter  Name' id='name' />
@@ -89,7 +89,7 @@ const AddCrop = () => {
                 <div type="text" onClick={categorychoose} className=" w-full py-1 px-2 border-gray-400 border-2 rounded outline-none bg-crop-400 items-center " placeholder='Enter  Category' id='vegetable' >Vegetable</div>
                 <div type="text" onClick={categorychoose} className=" w-full py-1 px-2 border-gray-400 border-2 rounded outline-none bg-crop-400 items-center " placeholder='Enter  Category' id='cereal' >Cereal</div>
               </div>} */}
-              <select name="category" onClick={categorychoose} id="category" className='w-24 px-3 py-1 bg-crop-300 text-white'>
+              <select name="category" onClick={handleChange} id="category" className='w-36 px-3 py-1 focus:border-crop-400 border-2 border-black rounded-lg'>
                 <option value="fruit">Fruit</option>
                 <option value="vegetable">Vegetable</option>
                 <option value="cereal">Cereal</option>

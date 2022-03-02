@@ -13,8 +13,7 @@ import Additems from './pages/additems';
 
 //HOC
 import HomeLayoutHOC from './HOC/Home.HOC';
-// <<<<<<< HEAD
-import additems from './pages/additems';
+
 // =======
 import CropItemLayoutHOC from './HOC/CropItem.HOC';
 import Fruit from './pages/Fruit';
@@ -44,7 +43,7 @@ function App() {
   return (
     <>
      
-      <HomeLayoutHOC path="/addcrop" exact component={additems} />
+      <HomeLayoutHOC path="/addcrop" exact component={Additems} />
       
       <HomeLayoutHOC path="/" exact component={Home} />
       <CropItemLayoutHOC path="/fruit" exact component={Fruit}/>
@@ -52,7 +51,7 @@ function App() {
       <CropItemLayoutHOC path="/cereals" exact component={Cereals}/>
       <CropItemLayoutHOC path="/cereals/:id" exact component={CropDetails}/>
       <CropItemLayoutHOC path="/vegetables/:id" exact component={CropDetails}/>
-      <CropItemLayoutHOC path="/fruit/:id" exact component={CropDetails}/>
+      <CropItemLayoutHOC path="/:category/:id" exact component={CropDetails}/>
       <HomeLayoutHOC path="/contactus" exact component={ContactUs} />
       <HomeLayoutHOC path="/profile" exact component={Profile} />
 

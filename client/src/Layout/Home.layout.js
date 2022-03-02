@@ -7,8 +7,8 @@ import Navbar from "../Components/Navbar"
 const HomeLayout = (props) => {
     return (
         <>
-            <Navbar />
-            <div className="container mx-auto px-4 lg:px-20">{props.children}</div>
+            <div className="fixed bg-fixed z-40 w-full"><Navbar /></div>
+            <div className="pt-14">{props.children}</div>
         </>
     )
 };

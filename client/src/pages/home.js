@@ -10,7 +10,7 @@ const Home = () => {
 
     return <>
         <div className="my-5">
-            <HomeCarousal/>
+            <div className="w-full h-screen"><HomeCarousal/></div>
             <HomeCategory/>
         </div>
 

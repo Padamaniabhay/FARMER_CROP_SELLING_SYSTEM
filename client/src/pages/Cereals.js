@@ -46,7 +46,7 @@ const Cereals = () => {
       <div className='flex flex-wrap w-full h-auto gap-6 py-5 px-5'>
         {
           cropList && cropList.map((crop) => (
-            <CropCard {...crop} key={crop._id} />
+            <CropCard {...crop} Category="cereal" key={crop._id} />
           ))
         }
       </div>

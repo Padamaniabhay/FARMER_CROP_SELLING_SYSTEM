@@ -19,11 +19,10 @@ const CropCard = (props) => {
     //     }, [props.image]);
 
     // console.log({image});
-// console.log({props});
     
     return <>
 
-        <Link to={`/fruit/${props._id}`} {...props} className="flex flex-col flex-wrap mx-8 w-1/4">
+        <Link to={`/${props.Category}/${props._id}`} {...props} className="flex flex-col flex-wrap mx-8 w-1/4">
             <div className='w-full h-96 border-2 rounded-2xl hover:shadow-xl py-2 px-4 transitions duration-700 ease-in-out'>
                 <div className='w-full h-60'>
                     <img
