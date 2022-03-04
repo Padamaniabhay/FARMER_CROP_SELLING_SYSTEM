@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaChevronDown } from "react-icons/fa"
+import { TiShoppingCart } from "react-icons/ti"
 import logo from "./LogoMakr-5hzIWn.png"
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -47,6 +48,7 @@ const LargNav = ({ SignIn, SignUp }) => {
                         (
                             <div className='font-bold text-xl flex items-center flex-row gap-5 relative'>
                                 <button className='font-normal text-lg flex gap-1 items-center hover:text-pink-600 text-white' onClick={() => navigate('/addcrop')}>AddCrop</button>
+                                <button className='font-normal text-lg flex gap-1 items-center hover:text-pink-600 text-white' onClick={() => navigate('/cart')}><TiShoppingCart/>Cart</button>
                                 <button className='font-bold text-2xl flex gap-1 items-center hover:text-pink-600 text-white' onClick={() => setIsDropDownOpen((prev) => !prev)} >{reduxState?.user?.fullname}<FaChevronDown /></button>
                                 {
                                     isDropDownOpen &&

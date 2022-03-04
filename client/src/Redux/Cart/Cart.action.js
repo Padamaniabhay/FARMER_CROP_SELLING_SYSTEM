@@ -61,6 +61,22 @@ export const DeleteCart = (foodID) => async (dispatch) => {
     }
 };
 
+
+
+
+export const DeleteAllCart = () => async (dispatch) => {
+    try {
+        localStorage.removeItem("cropCart",);
+        window.location.href = "http://localhost:3000/";
+
+
+        return dispatch({ type: DELETE_CART,payload:{}});
+    } catch (error) {
+        return dispatch({ type: "ERROR", payload: error });
+    }
+};
+
+
 export const IncQty = (foodID) => async (dispatch) => {
     try {
         let cartData = { cart: [] };

@@ -14,16 +14,16 @@ Access          Public
 Method          GET
 */
 
-Router.get("/:_id", passport.authenticate("jwt",{session:false}) ,async(req,res)=>{
-    try{
-        const {_id} =req.params;
-        const getOrders = await OrderModel.findOne({user:_id});
- 
-        if(!getOrders) return res.status(404).json({error:"User not found"});
-        return res.json({orders:getOrders});
-        
-    }catch(error){
-            return res.status(500).json({error:error.message});
+Router.get("/:_id", passport.authenticate("jwt", { session: false }), async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const getOrders = await OrderModel.findOne({ user: _id });
+
+        if (!getOrders) return res.status(404).json({ error: "User not found" });
+        return res.json({ orders: getOrders });
+
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
     }
 });
 
@@ -37,27 +37,31 @@ Access          Public
 Method          POST
 */
 
-Router.post("/new/:_id",async(req,res)=>{
-    try{
-        const {_id} =req.params;
-        const {orderDetails} = req.body;
+Router.post("/new/:_id", async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const { orderDetails } = req.body;
+        // const orderDetails = JSON.parse(req.body.orderDetails);
+        // console.log({ orderDetails });
 
         const addNewOrder = await OrderModel.findOneAndUpdate(
             {
-                user:_id
+                user: _id
             },
             {
-                $push:{orderDetails}        //orderDetails is same as orderDetails:orderDetails
+               $push: { orderDetails }        //orderDetails is same as orderDetails:orderDetails
             },
             {
-                new:true
+                upsert: true,
+                new: true
             }
         )
+        // console.log({ addNewOrder });
+        return res.json({ order: addNewOrder });
+        // return res.json({ order:"evc" });
 
-        return res.json({order:addNewOrder});
-
-    }catch(error){
-            return res.status(500).json({error:error.message});
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
     }
 });
 

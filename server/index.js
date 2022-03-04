@@ -17,6 +17,7 @@ import Order from "./API/Orders";
 import Review from "./API/reviews";
 import User from "./API/User";
 import Crop from "./API/Crop";
+import payment from "./API/Payment"
 
 
 
@@ -61,7 +62,7 @@ crop.use("/order", Order);
 crop.use("/reviews", Review);
 crop.use("/user", User);
 crop.use("/crop", Crop);
-
+crop.use("/payment",payment);
 
 crop.get("/", (req, res) => res.json({ message: "SetUp Success Yay!!!!!!" }));
 

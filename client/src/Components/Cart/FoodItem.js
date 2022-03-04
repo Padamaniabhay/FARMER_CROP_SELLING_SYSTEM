@@ -16,10 +16,18 @@ const FoodItem = (props) => {
         dispatch(DecQty(props._id));
     };
 
+
     return (
         <>
-            <div className="flex items-center justify-between">
-                <h5>{props.name}</h5>
+            <div className="flex items-center justify-around gap-48">
+                <div className="w-20 h-20 flex gap-3 items-center text-xl">
+                    <img
+                        src={`http://localhost:4000/public/images/${props?.image}`}
+                        alt={props?.name}
+                        className='w-full h-full'
+                    />
+                    <h5>{props.name}</h5>
+                </div>
                 <div className="flex items-center gap-2">
                     <div className="flex flex-col items-end">
                         <small>₹{parseInt(props.price) * parseInt(props.quantity)}</small>
@@ -41,7 +49,7 @@ const FoodItem = (props) => {
                     </div>
                     <BsTrashFill
                         onClick={deleteFoodFromCart}
-                        className="text-crop-400 text-lg md:text-xl  "
+                        className="text-crop-400 text-lg items-baseline md:text-xl  "
                     />
                 </div>
             </div>

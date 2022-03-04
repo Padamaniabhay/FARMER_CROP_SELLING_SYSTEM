@@ -1,5 +1,4 @@
 import React from "react";
-import CartContainer from "../Components/Cart/CartContainer";
 
 
 //components
@@ -15,7 +14,6 @@ const CropItemLayout = (props) => {
                 <div className="container mx-auto px-4 lg:px-20">{props.children}</div>
                 <div className='bg-crop-400 w-full flex justify-center text-xl items-center font-extrabold py-1 rounded-lg text-pink-600'>Finish</div>
             </div>
-            <CartContainer />
         </>
     )
 };
