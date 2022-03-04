@@ -5,7 +5,7 @@ const footer = () => {
     return (
         <>
             <footer>
-                <div className='py-2 bg-crop-400 flex justify-items-center'>
+                <div className='py-2 w-full bg-crop-400 flex '>
                     <div className='w-full  text-white px-10 text-xl '>
                         Get connected with us on social networks!
                     </div>
