@@ -14,7 +14,7 @@ const category = [
         Id:"vegetables"
     },
     {
-        image: "https://c8.alamy.com/comp/S04NJF/cereal-crop-growing-in-june-uk-S04NJF.jpg",
+        image: "https://cdn.dnaindia.com/sites/default/files/styles/full/public/2016/12/26/532501-wheat-863392960720.jpg",
         title: "Cereals",
         summary: "Major varieties of cereals & nuts. Raw or processed.",
         Id:"cereals"

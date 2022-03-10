@@ -24,6 +24,8 @@ import ContactUs from './pages/Contactus';
 import Profile from './pages/profile';
 import Cart from './pages/Cart';
 import Checkout from './pages/checkout';
+import Aboutus from './pages/aboutus';
+
 // >>>>>>> 2eb299f921ca9a9031459943dff8e06406b862e9
 
 
@@ -56,6 +58,7 @@ function App() {
       <HomeLayoutHOC path="/profile" exact component={Profile} />
       <HomeLayoutHOC path="/cart" exact component={Cart} />
       <HomeLayoutHOC path="/order" exact component={Checkout} />
+      <HomeLayoutHOC path="/Aboutus" exact component={Aboutus} />
 
     </>
   );
