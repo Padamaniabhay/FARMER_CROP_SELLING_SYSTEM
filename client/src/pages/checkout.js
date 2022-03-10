@@ -66,7 +66,7 @@ const Checkout = () => {
     // console.log({reduxStateUser});
 
     return (
-        <div className="my-3 pt-14 flex flex-col h-full gap-3 items-center">
+        <div className="my-3 pt-14 pb-96 flex flex-col h-full gap-3 items-center">
             <h1 className="text-xl h-full text-center md:text-2xl font-bold">Checkout</h1>
             <div className="w-full md:w-3/5 h-full rounded-lg  py-3 shadow-lg bg-white flex flex-col items-center">
                 <h3 className="text-lg font-semibold">Summary</h3>

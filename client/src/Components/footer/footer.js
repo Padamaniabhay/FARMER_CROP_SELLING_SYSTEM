@@ -5,7 +5,7 @@ const footer = () => {
     return (
         <>
             <footer>
-                <div className='py-2 bg-crop-400 flex justify-items-center'>
+            <div className='py-2 w-full bg-crop-400 flex '>
                     <div className='w-full  text-white px-10 text-xl '>
                         Get connected with us on social networks!
                     </div>
@@ -23,10 +23,7 @@ const footer = () => {
                         </div>
                     </div>
                 </div>
-            </footer>
-
-            <footer>
-                <div className='w-full px-4 bg-black' >
+                <div className='w-full px-4 bg-black ' >
                     <div className='row'>
                         <div className='mx-10'>
                             <div className='row flex px-4 py-4 '>
@@ -43,7 +40,7 @@ const footer = () => {
                                             <a href='http://localhost:3000/'>Home</a>
                                         </li>
                                         <li className='py-3 text-green-500'>
-                                            <a href='#'>Cart</a>
+                                            <a href='http://localhost:3000/cart'>Cart</a>
                                         </li>
                                         <li className='py-3 text-green-500'>
                                             <a href='http://localhost:3000/aboutus'>About us</a>
