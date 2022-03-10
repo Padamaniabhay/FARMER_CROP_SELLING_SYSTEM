@@ -9,10 +9,10 @@ import HomeCategory from "../Components/HomeCategory";
 const Home = () => {
 
     return <>
-        <div className="my-5">
+        <div className="bg-gray-100">
             <div className="w-full h-screen"><HomeCarousal /></div>
             <HomeCategory />
-            <div className="mt-64 bg-slate-200  ">
+            <div className="p-10 bg-slate-200  ">
                 <div className="text-5xl   text-slate-700 font-semibold  text-center">
                     COMPREHENSIVE SERVICES
                 </div>

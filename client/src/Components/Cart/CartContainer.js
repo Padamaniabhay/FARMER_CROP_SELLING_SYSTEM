@@ -76,7 +76,7 @@ const CartContainer = () => {
     return (
         <>
 
-            <div className=" h-48 bg-white  z-10 p-2 px-3 pt-20">
+            <div className="h-full bg-white  z-10 p-2 px-3 pt-20">
                 <div className="flex items-center justify-between md:px-20">
                     <div className="w-full bg-white">
                         <CartLg />

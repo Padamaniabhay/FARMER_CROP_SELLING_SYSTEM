@@ -123,4 +123,21 @@ Router.get("/specific/:_id", async (req, res) => {
 })
 
 
+
+Router.get("/user/:_id", passport.authenticate("jwt", { session: false }), async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const GetCrop = await CropModel.find({ farmer: _id });
+
+        if (!GetCrop) return res.status(404).json({ error: "Crop not found" });
+        return res.json({ orders: GetCrop });
+
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+});
+
+
+
+
 export default Router;

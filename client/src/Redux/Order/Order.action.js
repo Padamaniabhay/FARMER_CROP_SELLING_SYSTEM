@@ -1,7 +1,8 @@
 import axios from "axios";
+import { getMySelf } from "../User/User.action";
 
 // Redux types
-import { CREATE_ORDER, ORDER_PLACED } from "./Order.type";
+import { CREATE_ORDER, ORDER_PLACED,GET_ORDER } from "./Order.type";
 
 export const createOrder = (amount) => async (dispatch) => {
     try {
@@ -47,6 +48,23 @@ export const orderPlaced = (cartData, userid) => async (dispatch) => {
         // await Promise.all(placeOrder);
 
         return dispatch({ type: ORDER_PLACED, payload: placeOrder.data, });
+    } catch (error) {
+        return dispatch({ type: "ERROR", payload: error });
+    }
+};
+
+
+export const getOrders = (_id) => async (dispatch) => {
+    try {
+        const order = await axios({
+            method: "GET",
+            url: `http://localhost:4000/order/${_id}`,
+        });
+
+        // console.log({ order });
+        getMySelf();
+
+        return dispatch({ type: GET_ORDER, payload: order.data });
     } catch (error) {
         return dispatch({ type: "ERROR", payload: error });
     }

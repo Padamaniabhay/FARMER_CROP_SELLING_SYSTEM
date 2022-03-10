@@ -1,7 +1,7 @@
 import axios from "axios"
 
 //redux types
-import { ADD_CROP, GET_CROP, GET_SEARCH_CROP, GET_SPECIFIC_CROP } from "./Crop.type";
+import { ADD_CROP, GET_CROP, GET_SEARCH_CROP, GET_SPECIFIC_CROP, GET_USER_CROP } from "./Crop.type";
 
 
 //redux action
@@ -46,7 +46,7 @@ export const GetCrop = (category) => async (dispatch) => {
 };
 
 
-export const GetCropBySearch = (searchName,category) => async (dispatch) => {
+export const GetCropBySearch = (searchName, category) => async (dispatch) => {
     try {
         const Crop = await axios({
             method: "GET",
@@ -72,6 +72,23 @@ export const getSpecificCrop = (_id) => async (dispatch) => {
         });
 
         return dispatch({ type: GET_SPECIFIC_CROP, payload: crop.data })
+    } catch (error) {
+        return dispatch({ type: "ERROR", payload: error })
+
+    }
+};
+
+
+export const GetUserCrop = (_id) => async (dispatch) => {
+    try {
+        const Crop = await axios({
+            method: "GET",
+            url: `http://localhost:4000/crop/user/${_id}`,
+        });
+
+        getMySelf();
+
+        return dispatch({ type: GET_USER_CROP, payload: Crop.data })
     } catch (error) {
         return dispatch({ type: "ERROR", payload: error })
 

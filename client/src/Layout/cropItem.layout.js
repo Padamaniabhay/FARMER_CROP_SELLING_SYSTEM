@@ -14,8 +14,8 @@ const CropItemLayout = (props) => {
                 <div className='text-lg font-medium px-3 py-4'>No need to visit field to get grains!!! Just order here and and get all kinds of garins deliverd at your doorstep. Why to wait? Go and order.</div>
                 <div className="container mx-auto px-4 lg:px-20">{props.children}</div>
                 {/* <div className='bg-crop-400 w-full flex justify-center text-xl items-center font-extrabold py-1 rounded-lg text-pink-600'>Finish</div> */}
-                <Footer/>
             </div>
+            <Footer />
         </>
     )
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { BsShieldLockFill } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "./../Components/Navbar/LogoMakr-5hzIWn.png"
@@ -9,8 +9,7 @@ import FoodItem from "../Components/Cart/FoodItem";
 
 // reduxa action
 import { createOrder, orderPlaced } from "../Redux/Order/Order.action";
-import { getMySelf } from "../Redux/User/User.action";
-import { DeleteAllCart } from "../Redux/Cart/Cart.action";
+import { DeleteAllCart, getCart } from "../Redux/Cart/Cart.action";
 
 
 const Checkout = () => {
@@ -18,6 +17,12 @@ const Checkout = () => {
     const reduxStateUser = useSelector((global) => global.user.user.user);
 
     // console.log({ reduxStateUser:reduxStateUser });
+
+    useEffect(() => {
+        dispatch(getCart());
+    }, [])
+
+
 
     const dispatch = useDispatch();
 
@@ -58,6 +63,8 @@ const Checkout = () => {
         // createOrder(reduxStateCart.reduce((acc, curVal) => acc + (curVal.price * curVal.quantity), 0))
     };
 
+    // console.log({reduxStateUser});
+
     return (
         <div className="my-3 pt-14 flex flex-col h-full gap-3 items-center">
             <h1 className="text-xl h-full text-center md:text-2xl font-bold">Checkout</h1>
@@ -66,17 +73,17 @@ const Checkout = () => {
                 <div className="flex w-full  flex-col gap-2 items-center">
                     <h5 className="text-base tracking-wider">ORDER FROM</h5>
                     {
-                        <h4>{reduxStateUser.address}</h4>
+                        <h4 className="text-xl font-bold">{reduxStateUser?.fullname}</h4>
                     }
                     <div className="my-4 h-full px-4 flex flex-col gap-2 w-full md:w-3/5 ">
-                        {reduxStateCart.map((food) => (
+                        {reduxStateCart && reduxStateCart.map((food) => (
                             <FoodItem key={food._id} {...food} />
                         ))}
                     </div>
                 </div>
                 <button
                     onClick={payNow}
-                    className="flex items-center gap-2 justify-center my-4 md:my-8 w-full px-4 md:w-4/5 px-0 h-14 text-white font-medium text-lg bg-crop-400 rounded-lg"
+                    className="flex items-center gap-2 justify-center my-4 md:my-8 w-full md:w-4/5 px-0 h-14 text-white font-medium text-lg bg-crop-400 rounded-lg"
                 >
                     Pay Securely <BsShieldLockFill />
                 </button>

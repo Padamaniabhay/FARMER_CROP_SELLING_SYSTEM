@@ -20,7 +20,7 @@ const CropDetails = () => {
 
     useEffect(() => {
         dispatch(getSpecificCrop(id)).then((data) => {
-            setCrop((prev) => ({ ...prev, ...data.payload.crop }))
+            setCrop((prev) => ({ ...prev, ...data.payload.crop,isAddedToCart:false }))
             setCart((prev) => ({ ...prev, ...data.payload.crop, quantity: 1 }))
         });
     }, [id])

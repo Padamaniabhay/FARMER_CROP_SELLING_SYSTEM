@@ -70,18 +70,18 @@ const footer = () => {
                                 <div className='w-1/4 px-4'>
                                     <h2 className='py-4 text-gray-400 text-xl font-bold'>GET IN TOUCH</h2>
 
-                                    <form>
-                                        <div className='text-gray-400 w-full'>
+                                    <form className='flex flex-col gap-3'>
+                                        <div className='text-gray-400 w-full py-3'>
                                             <label htmlFor='email'>Email address</label>
-                                            <input type="email" className='p-1 w-full' id='name' />
+                                            <input type="email" className='p-1 my-2 rounded-md w-full' id='name' />
                                         </div>
                                         <div className='text-gray-400 w-full'>
                                             <label htmlFor='comment'>Comment</label>
-                                            <textarea type='text' className='p-1 w-full' id='comment'/>
+                                            <textarea type='text' className='p-1 my-2 rounded-md w-full' id='comment' />
                                         </div>
-                                    <button className='my-2 bg-blue-400 text-white w-1/2 p-2 hover:bg-blue-600 transition-colors duration-200'>
-                                        SEND MESSAGE
-                                    </button>
+                                        <button className='my-2 bg-blue-400 text-white w-1/2 p-2 rounded-md hover:bg-blue-600 transition-colors duration-200'>
+                                            SEND MESSAGE
+                                        </button>
                                     </form>
 
                                 </div>

@@ -1,6 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from "react-redux"
+import { GetUserCrop } from '../Redux/Crop/Crop.action';
+import { getOrders } from '../Redux/Order/Order.action';
 
-const profilePage = () => {
+
+
+const ProfilePage = () => {
+
+    const dispatch = useDispatch();
+
+    const reduxState = useSelector((global) => global);
+
+    // console.log({ reduxState });
+
+    useEffect(() => {
+        reduxState.user.user.user && dispatch(getOrders(reduxState.user.user.user._id));
+        reduxState.user.user.user && dispatch(GetUserCrop(reduxState.user.user.user._id));
+
+    }, [reduxState.user.user.user])
+
+    console.log({ reduxState });
+
     return (
 
         <>
@@ -29,7 +49,7 @@ const profilePage = () => {
                                     <label htmlFor='confirm passoword' >Confirm Password</label>
                                     <input type="password" className='border-2 p-1' id='confirm password' />
                                 </div>
-                                <button className='my-4 bg-blue-500 px-2 py-1 text-white p-2 hover:bg-blue-900 transition-colors duration-200'>
+                                <button className='my-4 bg-blue-500 px-2 py-1 text-white p-2 hover:bg-blue-900 transition-colors duration-200 rounded-md'>
                                     Update
                                 </button>
                             </div>
@@ -44,42 +64,33 @@ const profilePage = () => {
 
                             <table className='w-full my-6 table-auto text-left'>
                                 <thead>
-                                    <tr>
+                                    <tr className='px-1'>
                                         <th>ID</th>
-                                        <th>DATE</th>
                                         <th>TOTAL</th>
                                         <th> PAID</th>
                                         <th>DELIVER</th>
-                                        <th> MORE</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr className='bg-slate-300'>
-                                        <td>1002121313132</td>
-                                        <td>2022-02-19</td>
-                                        <td>9200</td>
-                                        <td>x</td>
-                                        <td>x</td>
-                                        <td><button type='submit' className='bg-blue-500 px-2 py-1 text-white p-1 hover:bg-blue-900 transition-colors duration-200'>Details</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1002121313132</td>
-                                        <td>2022-02-19</td>
-                                        <td>9200</td>
-                                        <td>x</td>
-                                        <td>x</td>
-                                        <td><button type='submit' className='bg-blue-500 px-2 py-1 text-white p-1 hover:bg-blue-900 transition-colors duration-200'>Details</button></td>
-                                    </tr>
-                                    <tr className='bg-slate-300'>
-                                        <td>1002121313132</td>
-                                        <td>2022-02-19</td>
-                                        <td>9200</td>
-                                        <td>x</td>
-                                        <td>x</td>
-                                        <td><button type='submit' className='bg-blue-500 px-2 py-1 text-white p-1 hover:bg-blue-900 transition-colors duration-200'>Details</button></td>
-                                    </tr>
+                                    {
+                                        reduxState?.Order?.order?.orders[0]?.orderDetails?.map((order, index) => (
+                                            index & 1 ?
+                                                <tr>
+                                                    <td className='p-2'>{order._id}</td>
+                                                    <td>{order.paymentDetails.itemTotal}</td>
+                                                    <td>YES</td>
+                                                    <td>YES</td>
+                                                </tr>
+                                                :
+                                                <tr className='bg-slate-300 '>
+                                                    <td className='p-2'>{order._id}</td>
+                                                    <td>{order.paymentDetails.itemTotal}</td>
+                                                    <td>YES</td>
+                                                    <td>YES</td>
+                                                </tr>
+                                        ))
+                                    }
                                 </tbody>
-
                             </table>
                         </div>
 
@@ -96,38 +107,30 @@ const profilePage = () => {
                                         <th>ADDRESS</th>
                                         <th>Quntity(.kg)</th>
                                         <th>REVIEWED</th>
-                                        <th>EDIT</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr className='bg-slate-300'>
-                                        <td>APPLE</td>
-                                        <td>A-101</td>
-                                        <td>surat</td>
-                                        <td>1000</td>
-                                        <td>good </td>
-                                        <td><button type='submit' class="bg-blue-500 px-2 py-1 text-white p-1 hover:bg-blue-900 transition-colors duration-200">
-                                            Edit</button></td>
-                                    </tr>
-                                    <tr className=''>
-                                        <td>APPLE</td>
-                                        <td>A-101</td>
-                                        <td>surat</td>
-                                        <td>1000</td>
-                                        <td>good </td>
-                                        <td><button type='submit' class="bg-blue-500 px-2 py-1 text-white p-1 hover:bg-blue-900 transition-colors duration-200">
-                                            Edit</button></td>
-                                    </tr>
-                                    <tr className='bg-slate-300'>
-                                        <td>APPLE</td>
-                                        <td>A-101</td>
-                                        <td>surat</td>
-                                        <td>1000</td>
-                                        <td>good </td>
-                                        <td><button type='submit' class="bg-blue-500 px-2 py-1 px-2 py-1 text-white p-1 hover:bg-blue-900 transition-colors duration-200">
-                                            Edit</button></td>
-                                    </tr>
 
+                                    {
+                                        reduxState?.crop?.crop?.orders?.map((crop, index) => (
+                                            index & 1 ?
+                                                <tr>
+                                                    <td className='p-2'>{crop.name}</td>
+                                                    <td>{crop._id}</td>
+                                                    <td>{crop.address}</td>
+                                                    <td>{crop.quantity}</td>
+                                                    <td>good </td>
+                                                </tr>
+                                                :
+                                                <tr className='bg-slate-300'>
+                                                    <td className='p-2'>{crop.name}</td>
+                                                    <td>{crop._id}</td>
+                                                    <td>{crop.address}</td>
+                                                    <td>{crop.quantity}</td>
+                                                    <td>good </td>
+                                                </tr>
+                                        ))
+                                    }
                                 </tbody>
 
                             </table>
@@ -145,4 +148,4 @@ const profilePage = () => {
     )
 }
 
-export default profilePage
+export default ProfilePage
