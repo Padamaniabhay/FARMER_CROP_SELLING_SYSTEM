@@ -35,6 +35,9 @@ const SignIn = ({isOpen,setIsOpen}) => {
         setIsOpen(false);
     }
 
+    const googleSignIn = () => (window.location.href = "http://localhost:4000/auth/google");
+
+    
   return <>
       <div>
       <Transition appear show={isOpen} as={Fragment}>
@@ -79,7 +82,7 @@ const SignIn = ({isOpen,setIsOpen}) => {
                                 >
                                 </Dialog.Title>
                                 <div className="mt-2 flex flex-col gap-3 w-full">
-                                    <button  className='flex justify-center py-2 items-center gap-2 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100 rounded-lg'>Sign In With Google <FcGoogle /></button>
+                                    <button onClick={googleSignIn}  className='flex justify-center py-2 items-center gap-2 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100 rounded-lg'>Sign In With Google <FcGoogle /></button>
                                     <form className='flex flex-col gap-3'>
                                         <div className='w-full flex flex-col gap-2'>
                                             <label htmlFor='email' >Email</label>

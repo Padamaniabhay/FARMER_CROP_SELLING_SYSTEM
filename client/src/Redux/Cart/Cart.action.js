@@ -26,9 +26,14 @@ export const addCart = (newFood) => async (dispatch) => {
             const { cart } = JSON.parse(localStorage.getItem("cropCart"));
             cartData.cart = cart;
         }
-
+        cartData.cart=cartData.cart.filter((item) => {
+            // console.log({item});
+            return item._id !== newFood._id;
+        });
+        
         cartData.cart.push(newFood);
-
+        
+        console.log(cartData.cart)
         localStorage.setItem("cropCart", JSON.stringify({ cart: cartData.cart }));
 
         return dispatch({ type: ADD_CART, payload: cartData.cart });
@@ -70,7 +75,7 @@ export const DeleteAllCart = () => async (dispatch) => {
         window.location.href = "http://localhost:3000/";
 
 
-        return dispatch({ type: DELETE_CART,payload:{}});
+        return dispatch({ type: DELETE_CART, payload: {} });
     } catch (error) {
         return dispatch({ type: "ERROR", payload: error });
     }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaHouseUser, FaEnvelope, FaPhoneSquareAlt, FaMobileAlt, FaFacebookF, FaInstagram, FaLinkedin, FaGoogle, FaTwitter } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const footer = () => {
     return (
@@ -37,13 +38,13 @@ const footer = () => {
                                     <h2 className='py-4 text-gray-400 text-xl font-bold'>LINKS</h2>
                                     <ul>
                                         <li className='py-3 text-green-500'>
-                                            <a href='http://localhost:3000/'>Home</a>
+                                            <Link to='../../../../../../../../'>Home</Link>
                                         </li>
                                         <li className='py-3 text-green-500'>
-                                            <a href='http://localhost:3000/cart'>Cart</a>
+                                            <Link to='../../../../../../cart'>Cart</Link>
                                         </li>
                                         <li className='py-3 text-green-500'>
-                                            <a href='http://localhost:3000/aboutus'>About us</a>
+                                            <Link to='../../../../../../aboutus'>About us</Link>
                                         </li>
                                     </ul>
                                 </div>

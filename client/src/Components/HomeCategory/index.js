@@ -25,7 +25,7 @@ const HomeCategory = () => {
     return <>
         <div className='flex gap-6 w-full h-full justify-between px-20'>
             {
-                category.map((props) => (<CategoryCard {...props}/>))
+                category.map((props) => (<CategoryCard key={props.Id} {...props}/>))
             }
         </div>
     </>;

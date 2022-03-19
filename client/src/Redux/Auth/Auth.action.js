@@ -24,6 +24,8 @@ export const signIn = (userData) => async (dispatch) => {
 
         return dispatch({ type: SIGN_IN, payload: User.data })
     } catch (error) {
+        // console.log({ error });
+        alert(error.response.data.error);
         return dispatch({ type: "ERROR", payload: error })
 
     }
