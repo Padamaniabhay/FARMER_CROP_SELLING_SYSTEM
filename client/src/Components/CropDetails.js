@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getSpecificCrop } from '../Redux/Crop/Crop.action';
 import { IncQty, DecQty, addCart } from '../Redux/Cart/Cart.action';
 import RelatedItems from './RelatedItems';
+import Reviews from '../pages/Reviews';
 
 
 
@@ -20,7 +21,7 @@ const CropDetails = () => {
 
     useEffect(() => {
         dispatch(getSpecificCrop(id)).then((data) => {
-            setCrop((prev) => ({ ...prev, ...data.payload.crop,isAddedToCart:false }))
+            setCrop((prev) => ({ ...prev, ...data.payload.crop, isAddedToCart: false }))
             setCart((prev) => ({ ...prev, ...data.payload.crop, quantity: 1 }))
         });
     }, [id])
@@ -105,9 +106,12 @@ const CropDetails = () => {
                         </div>
                     </div>
                 </div>
-                 <div className='text-2xl font-bold'>Related Items</div>
+                <div className='text-2xl font-bold'>Related Items</div>
                 <div className='w-full h-full'>
                     <RelatedItems Category={category} />
+                </div>
+                <div className='w-full h-full'>
+                    <Reviews />
                 </div>
             </div>
         </>

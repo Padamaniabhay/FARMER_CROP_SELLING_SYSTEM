@@ -26,6 +26,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/checkout';
 import Aboutus from "./pages/aboutus";
 import GoogleAuth from './pages/GoogleAuth';
+import Reviews from './pages/Reviews';
 
 // >>>>>>> 2eb299f921ca9a9031459943dff8e06406b862e9
 
@@ -56,11 +57,13 @@ function App() {
       <CropItemLayoutHOC path="/vegetables" exact component={Vegetables} />
       <CropItemLayoutHOC path="/cereals" exact component={Cereals} />
       <CropItemLayoutHOC path="/:category/:id" exact component={CropDetails} />
+      {/* <CropItemLayoutHOC path="/:category/:id" exact component={Reviews} /> */}
       <HomeLayoutHOC path="/contactus" exact component={ContactUs} />
       <HomeLayoutHOC path="/profile" exact component={Profile} />
       <HomeLayoutHOC path="/cart" exact component={Cart} />
       <HomeLayoutHOC path="/order" exact component={Checkout} />
       <HomeLayoutHOC path="/aboutus" exact component={Aboutus} />
+      {/* <HomeLayoutHOC path="/review" exact component={Reviews} /> */}
     </>
   );
 }
